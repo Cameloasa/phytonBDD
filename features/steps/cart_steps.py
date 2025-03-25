@@ -20,23 +20,3 @@ def step_then_check_cart_count(context):
 def step_then_check_total_amount(context):
     # This will check the total price later
     assert context.cart.get_total_amount() == 10 , "Expected total amount 10, but found {}".format(context.cart.get_total_amount())
-
-@when(u'I add 2 copies of "Book A" to the cart')
-def step_impl(context):
-    raise NotImplementedError(u'STEP: When I add 2 copies of "Book A" to the cart')
-
-
-@then(u'the cart should contain 2 books')
-def step_impl(context):
-    raise NotImplementedError(u'STEP: Then the cart should contain 2 books')
-
-
-@then(u'the total amount should be 20')
-def step_impl(context):
-    raise NotImplementedError(u'STEP: Then the total amount should be 20')
-
-
-
-
-
-
