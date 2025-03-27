@@ -14,6 +14,12 @@ class Cart:
             # if is a new book, we add the price
             self.items[book_name] = {"quantity": quantity, "price": self.book_prices[book_name]}
 
+    def remove_book(self, book_name, quantity):
+        if book_name in self.items:
+            self.items[book_name]["quantity"] -= quantity
+            if self.items[book_name]["quantity"] <= 0:
+                del self.items[book_name]
+
     def get_total_books(self):
         # This will return the total number of books
         total = 0
@@ -27,3 +33,4 @@ class Cart:
         for item in self.items.values():
             total += item["quantity"] * item["price"]
         return total
+
