@@ -34,3 +34,6 @@ class Cart:
             total += item["quantity"] * item["price"]
         return total
 
+    def empty_cart(self):
+        self.items.clear()
+
