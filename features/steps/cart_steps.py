@@ -5,9 +5,18 @@ from cart import Cart
 def step_given_empty_cart(context):
     context.cart = Cart()
 
+@given('I have a cart with {initial:d} copies of "{book}"')
+def step_given_cart_with_books(context, initial, book):
+    context.cart = Cart()
+    context.cart.add_book(book, initial)
+
 @when('I add {quantity:d} copies of "{book}" to the cart')
 def step_when_add_book(context, quantity, book):
     context.cart.add_book(book, quantity)
+
+@when('I remove {quantity:d} copies of "{book}" from the cart')
+def step_when_remove_book(context, quantity, book):
+    context.cart.remove_book(book, quantity)
 
 @then("the cart should contain {expected:d} books")
 def step_then_check_cart_count(context, expected):
