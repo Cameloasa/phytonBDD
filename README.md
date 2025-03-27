@@ -4,8 +4,8 @@
 
 ## User Story 1
 **As a** user of the online bookstore,  
-**I want to** add books to my cart,  
-**so that** I can purchase them later.
+**I want to** manage my shopping cart,  
+**so that** I can purchase books easily.
 
 ### Acceptance Criteria
 1. The user can add a book to the cart, and the cart reflects the correct number of items.

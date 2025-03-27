@@ -3,20 +3,21 @@ from cart import Cart
 
 @given("I have an empty cart")
 def step_given_empty_cart(context):
-    # This will create an empty cart later
     context.cart = Cart()
 
-@when('I add 1 copy of "{book}" to the cart')
-def step_when_add_book(context, book):
-    # This will add the book to the cart later
-    context.cart.add_book(book , 1) # add a book to the cart
+@when('I add {quantity:d} copies of "{book}" to the cart')
+def step_when_add_book(context, quantity, book):
+    context.cart.add_book(book, quantity)
 
-@then("the cart should contain 1 book")
-def step_then_check_cart_count(context):
-    # This will check the number of books later
-    assert context.cart.get_total_books() == 1 , "Expected 1 book, but found {}".format(context.cart.get_total_books())
+@then("the cart should contain {expected:d} books")
+def step_then_check_cart_count(context, expected):
+    assert context.cart.get_total_books() == expected, f"Expected {expected} books, but found {context.cart.get_total_books()}"
 
-@then("the total amount should be correct")
-def step_then_check_total_amount(context):
-    # This will check the total price later
-    assert context.cart.get_total_amount() == 10 , "Expected total amount 10, but found {}".format(context.cart.get_total_amount())
+@then("the total amount should be {expected:d}")
+def step_then_check_total_amount(context, expected):
+    assert context.cart.get_total_amount() == expected, f"Expected total amount {expected}, but found {context.cart.get_total_amount()}"
+
+@then('"{book}" should appear as {quantity:d} copies on one line')
+def step_then_check_book_quantity(context, book, quantity):
+    assert book in context.cart.items, f"{book} not found in cart"
+    assert context.cart.items[book]["quantity"] == quantity, f"Expected {quantity} copies of {book}, but found {context.cart.items[book]['quantity']}"
