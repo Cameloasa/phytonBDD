@@ -10,6 +10,12 @@ def step_given_cart_with_books(context, initial, book):
     context.cart = Cart()
     context.cart.add_book(book, initial)
 
+@given('I have a cart with 1 copy of "Book A" and 1 copy of "Book B"')
+def step_given_cart_with_two_books(context):
+    context.cart = Cart()
+    context.cart.add_book("Book A", 1)
+    context.cart.add_book("Book B", 1)
+
 @when('I add {quantity:d} copies of "{book}" to the cart')
 def step_when_add_book(context, quantity, book):
     context.cart.add_book(book, quantity)
@@ -17,6 +23,10 @@ def step_when_add_book(context, quantity, book):
 @when('I remove {quantity:d} copies of "{book}" from the cart')
 def step_when_remove_book(context, quantity, book):
     context.cart.remove_book(book, quantity)
+
+@when("I empty the cart")
+def step_when_empty_cart(context):
+    context.cart.empty_cart()
 
 @then("the cart should contain {expected:d} books")
 def step_then_check_cart_count(context, expected):

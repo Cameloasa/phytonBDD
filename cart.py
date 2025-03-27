@@ -4,9 +4,14 @@ class Cart:
         self.items = {}  # Example: {"Book A": {"quantity": 1, "price": 10}}
         # simulate prices for books
         self.book_prices = {"Book A": 10, "Book B": 15}
+        self.max_stock = 1000
 
     def add_book(self, book_name, quantity):
         # This will add a book to the cart
+        if quantity < 0:
+            raise ValueError("Invalid cart quantity")
+        if quantity > self.max_stock:
+            raise ValueError("Quantity exceeds available stock")
         if book_name in self.items:
             #if book already exists in items we increase the quantity
             self.items[book_name]["quantity"] += quantity
@@ -36,4 +41,12 @@ class Cart:
 
     def empty_cart(self):
         self.items.clear()
+
+    def apply_discount(self):
+        total_books = self.get_total_books()
+        total = self.get_total_amount()
+        if total_books > 3:
+            discount = total * 0.10  # 10% reducere
+            return total - discount
+        return total
 
