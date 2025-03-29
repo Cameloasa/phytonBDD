@@ -19,7 +19,7 @@ class User:
     def logout(self):
         self.logged_in = False
 
-    def is_authenticate(self):
+    def is_authenticated(self):
         return self.logged_in
 
     def get_cart(self):
