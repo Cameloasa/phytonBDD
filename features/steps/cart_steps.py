@@ -34,7 +34,11 @@ def step_then_check_cart_count(context, expected):
 
 @then("the total amount should be {expected:d}")
 def step_then_check_total_amount(context, expected):
-    assert context.cart.get_total_amount() == expected, f"Expected total amount {expected}, but found {context.cart.get_total_amount()}"
+    # changed this function for applying discount
+    if hasattr(context, "total_with_discount"):
+        assert context.total_with_discount == expected, f"Expected total {expected}, but got {context.total_with_discount}"
+    else:
+        assert context.cart.get_total_amount() == expected, f"Expected total amount {expected}, but found {context.cart.get_total_amount()}"
 
 @then('"{book}" should appear as {quantity:d} copies on one line')
 def step_then_check_book_quantity(context, book, quantity):
