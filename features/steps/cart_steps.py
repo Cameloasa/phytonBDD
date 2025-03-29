@@ -1,5 +1,5 @@
 from behave import given, when, then
-from cart import Cart
+from src.cart import Cart
 
 @given("I have an empty cart")
 def step_given_empty_cart(context):

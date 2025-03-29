@@ -1,4 +1,4 @@
-from cart import Cart
+from src.cart import Cart
 
 class User:
 
@@ -14,19 +14,18 @@ class User:
         if self.username == username and self.password == password:
             self.logged_in = True
             return True
-        raise Exception("Invalid username or password")
+        raise AuthenticationError("Invalid username or password")
 
     def logout(self):
-        logged_in = False
+        self.logged_in = False
 
     def is_authenticate(self):
         return self.logged_in
 
     def get_cart(self):
-        if self.logged_in:
-            return self.cart
-        else:
-            raise Exception("User not logged in")
+        if not self.logged_in:
+            raise AuthenticationError("User not logged in")
+        return self.cart
 
 class AuthenticationError(Exception):
     pass
