@@ -28,7 +28,7 @@ def main():
 
     except AuthenticationError as e:
         print(f"[!] Authentication error: {e}")
-    except PaymentError(Exception) as e:
+    except PaymentError as e:
         print(f"[!] Payment error: {e}")
     except Exception as e:
         print(f"[!] Error: {e}")
