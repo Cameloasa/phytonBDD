@@ -4,37 +4,28 @@ Feature: Payment Processing and Receipt Generation
   So that I can complete my purchase and receive a receipt
 
   Background:
-    Given I am logged in as "user1" with password "pass123"
+    Given I am logged in as "user1" with password "pass123"  # login_steps.py
     And my cart contains:
       | Book   | Quantity |
       | Book A | 2        |
       | Book B | 2        |
 
-  # -------------------------------
-  # 1: Successful payment
-  # -------------------------------
   Scenario: Successfully process payment and generate receipt
-    When I choose to pay using "card"
-    Then the payment should be processed
+    When I process payment with "card"
+    Then I should see a payment confirmation "Payment of 45.00 SEK using card processed successfully"
     And I should receive a receipt with:
-      | Subtotal            | 50.00  |
-      | Discount Applied    | 5.00   |
-      | Total After Discount| 45.00  |
-    And my cart should be empty
+      | Subtotal            | 50.00 |
+      | Discount Applied    | 5.00  |
+      | Total After Discount| 45.00 |
+    And the cart should contain 0 books  # cart_steps.py
 
-  # -------------------------------
-  # 2: Try payment without login
-  # -------------------------------
   Scenario: Attempt payment while not logged in
     Given I am not logged in
-    When I try to pay using "card"
-    Then I should see an error "User must be logged in to make a payment"
+    When I process payment with "card"
+    Then I should see an error "User must be logged in to make a payment"  # login_steps.py
 
-  # -------------------------------
-  # 3: Try payment with empty cart
-  # -------------------------------
   Scenario: Attempt payment with empty cart
-    Given I am logged in as "user1" with password "pass123"
+    Given I am logged in as "user1" with password "pass123"  # login_steps.py
     And my cart is empty
-    When I try to pay using "card"
-    Then I should see an error "Cart is empty. Cannot process payment."
+    When I process payment with "card"
+    Then I should see an error "Cart is empty or invalid. Cannot process payment"

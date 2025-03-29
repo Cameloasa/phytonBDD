@@ -39,7 +39,12 @@ This project uses Behavior-Driven Development (BDD) with Python and Behave to im
 ## User Story 4 [U4]
 **As a** logged-in user,  
 **I want to** login make a payment for my cart,  
-**so that** I can complete my purchase and receive the recipe.
+**so that** I can complete my purchase and receive a recipe.
 
 ### Acceptance Criteria for [U4]
+1. The user can process a payment with "card" if logged in and the cart contains items, receiving a confirmation (e.g., "Payment of 45.00 SEK using card processed successfully").
+2. The user receives a receipt showing subtotal, discount applied, and total after discount after a successful payment.
+3. The cart is emptied after a successful payment.
+4. The user receives an error message "User must be logged in to make a payment" if not logged in.
+5. The user receives an error message "Cart is empty or invalid. Cannot process payment" if the cart is empty.
 
