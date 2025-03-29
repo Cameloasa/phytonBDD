@@ -4,7 +4,7 @@ Feature: Payment Processing and Receipt Generation
   So that I can complete my purchase and receive a receipt
 
   Background:
-    Given I am logged in as "user1" with password "pass123"  # login_steps.py
+    Given I am logged in as "user1" with password "pass123"
     And my cart contains:
       | Book   | Quantity |
       | Book A | 2        |
@@ -17,15 +17,15 @@ Feature: Payment Processing and Receipt Generation
       | Subtotal            | 50.00 |
       | Discount Applied    | 5.00  |
       | Total After Discount| 45.00 |
-    And the cart should contain 0 books  # cart_steps.py
+    And the cart should contain 0 books
 
   Scenario: Attempt payment while not logged in
     Given I am not logged in
     When I process payment with "card"
-    Then I should see an error "User must be logged in to make a payment"  # login_steps.py
+    Then I should see an error "User must be logged in to make a payment"
 
   Scenario: Attempt payment with empty cart
-    Given I am logged in as "user1" with password "pass123"  # login_steps.py
+    Given I am logged in as "user1" with password "pass123"
     And my cart is empty
     When I process payment with "card"
     Then I should see an error "Cart is empty or invalid. Cannot process payment"

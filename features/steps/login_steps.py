@@ -25,7 +25,9 @@ def step_check_cart_access(context):
 # Steps for session management
 @given('I am logged in as "{username}" with password "{password}"')
 def step_already_logged_in(context, username, password):
+    context.user = User(username, password)
     context.user.login(username, password)
+    context.cart = context.user.get_cart()
 
 @when('I refresh the page')
 def step_refresh(context):
