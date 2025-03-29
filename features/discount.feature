@@ -15,3 +15,9 @@ Feature: Discount Application
     And I apply the discount
     Then the toTal amount should be 30
 
+   Scenario: Handling negative total amount
+    Given I had an empty cart
+    When I add -10000 copies of "Book A" to the cart
+    And I apply the discount
+    Then I should see an error message "Invalid cart quantity"
+
