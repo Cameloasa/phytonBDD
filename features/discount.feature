@@ -21,3 +21,9 @@ Feature: Discount Application
     And I apply the discount
     Then I should see an error message "Invalid cart quantity"
 
+   Scenario: Handling excessive book quantity
+    Given I have an empty cart
+    When I add 50000 copies of "Book A" to the cart
+    And I apply the discount
+    Then I should see an error message "Quantity exceeds available stock"
+
