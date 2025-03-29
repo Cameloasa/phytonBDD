@@ -36,3 +36,10 @@ This project uses Behavior-Driven Development (BDD) with Python and Behave to im
 4. Access to Cart – After logging in, the user should be redirected to their account page with access to their cart.
 5. Logout Functionality – The user should be able to log out successfully, which should end their session.
 
+## User Story 4 [U4]
+**As a** logged-in user,  
+**I want to** login make a payment for my cart,  
+**so that** I can complete my purchase and receive the recipe.
+
+### Acceptance Criteria for [U4]
+

@@ -1,4 +1,4 @@
-from src.payment import Payment
+from src.payment import Payment, PaymentError
 from src.user import AuthenticationError, User
 
 
@@ -28,6 +28,8 @@ def main():
 
     except AuthenticationError as e:
         print(f"[!] Authentication error: {e}")
+    except PaymentError(Exception) as e:
+        print(f"[!] Payment error: {e}")
     except Exception as e:
         print(f"[!] Error: {e}")
 
