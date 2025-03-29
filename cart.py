@@ -46,7 +46,7 @@ class Cart:
         total_books = self.get_total_books()
         total = self.get_total_amount()
         if total_books > 3:
-            discount = total * 0.10  # 10% reducere
+            discount = total * 0.10  # 10% discount
             return total - discount
         return total
 
