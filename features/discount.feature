@@ -9,3 +9,9 @@ Feature: Discount Application
     And I apply the discount
     Then the total amount should be 36
 
+  Scenario: No discount when buying 3 or less books
+    Given I have an empty cart
+    When I add 3 copies of "Book A" to the cart
+    And I apply the discount
+    Then the toTal amount should be 30
+
