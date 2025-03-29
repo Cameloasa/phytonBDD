@@ -24,3 +24,9 @@ def step_check_logged_in(context):
 def step_check_error(context, error_message):
     assert isinstance(context.error, AuthenticationError), "Expected authentication error"
     assert str(context.error) == error_message
+
+@then(u'I should have access to my cart')
+def step_acces_cart(context):
+    assert context.user.get_cart() is not None, "Cart should be accessible"
+
+

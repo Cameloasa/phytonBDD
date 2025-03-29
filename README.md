@@ -27,14 +27,13 @@ This project uses Behavior-Driven Development (BDD) with Python and Behave to im
 ## User Story 3 [U3]
 **As a** user of the online bookstore,  
 **I want to** login to my account,  
-**so that** I can have acces to my cart and my offers.
+**so that** I can have acces to my cart.
 
 ### Acceptance Criteria for [U3]
 1. Successful Login – The user must be able to log in with a valid email and password.
 2. Incorrect Credentials – If the user enters an incorrect email or password, an appropriate error message should be displayed.
-3. Password Recovery Option – If the user forgets their password, a "Forgot Password?" link should be available to reset it.
-4. Session Management – After logging in, the user should remain authenticated until they log out or the session expires.
-5. Access to Cart & Offers – After logging in, the user should be redirected to their account page with access to their cart and personalized offers.
-6. Logout Functionality – The user should be able to log out successfully, which should end their session.
-7. Security – The system should prevent multiple failed login attempts (e.g., lock account after 5 failed attempts).
+3. Session Management – After logging in, the user should remain authenticated until they log out or the session expires.
+4. Access to Cart – After logging in, the user should be redirected to their account page with access to their cart.
+5. Logout Functionality – The user should be able to log out successfully, which should end their session.
+6. Security – The system should prevent multiple failed login attempts (e.g., lock account after 5 failed attempts).
 
