@@ -15,7 +15,7 @@ Feature: Payment Processing and Receipt Generation
     Then I should see a payment confirmation "Payment of 45.00 SEK using card processed successfully"
     And I should receive a receipt with:
       | Subtotal            | 50.00 |
-      | Discount Applied    | 5.00  |
+      | Discount            | 5.00  |
       | Total After Discount| 45.00 |
     And the cart should contain 0 books
 
