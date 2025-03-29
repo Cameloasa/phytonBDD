@@ -18,7 +18,11 @@ def step_given_cart_with_two_books(context):
 
 @when('I add {quantity:d} copies of "{book}" to the cart')
 def step_when_add_book(context, quantity, book):
-    context.cart.add_book(book, quantity)
+    # catch the error for handling negative amount
+    try:
+        context.cart.add_book(book, quantity)
+    except ValueError as e:
+        context.error = str(e)
 
 @when('I remove {quantity:d} copies of "{book}" from the cart')
 def step_when_remove_book(context, quantity, book):
