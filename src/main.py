@@ -33,6 +33,21 @@ def main():
     except Exception as e:
         print(f"[!] Error: {e}")
 
+    # Test wrong login
+    user = User("user1", "pass123")
+    try:
+        user.login("user1", "wrongpass")
+    except AuthenticationError as e:
+        print(f"[!] Authentication error: {e}")
+
+    # Test empty cart
+    user.login("user1", "pass123")
+    payment = Payment(user)
+    try:
+        payment.process_payment("card")
+    except PaymentError as e:
+        print(f"[!] Payment error: {e}")
+
 
 if __name__ == "__main__":
     main()
