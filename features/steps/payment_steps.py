@@ -5,7 +5,7 @@ from src.user import AuthenticationError, User
 @given("I am not logged in")
 def step_given_not_logged_in(context):
     context.user = User("user1", "pass123")
-    context.cart = context.user.get_cart()
+    context.cart = None
 
 @given("my cart contains")
 def step_given_cart_contains(context):
@@ -30,7 +30,7 @@ def step_when_process_payment(context):
 @then('I should see a payment confirmation "{message}"')
 def step_then_payment_confirmation(context, message):
     assert hasattr(context, "payment"), "Payment failed unexpectedly"
-    assert context.payment.total_amount > 0, "Payment amount should be positive"
+    assert context.payment.total_amount == 45.00, f"Expected 45.00, got {context.payment.total_amount}"
 
 @then('I should receive a receipt with')
 def step_then_receive_receipt(context):
