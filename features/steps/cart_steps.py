@@ -36,6 +36,7 @@ def step_when_empty_cart(context):
 def step_then_check_cart_count(context, expected):
     assert context.cart.get_total_books() == expected, f"Expected {expected} books, but found {context.cart.get_total_books()}"
 
+
 @then("the total amount should be {expected:d}")
 def step_then_check_total_amount(context, expected):
     # changed this function for applying discount

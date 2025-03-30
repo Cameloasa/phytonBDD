@@ -12,12 +12,13 @@ Feature: Payment Processing and Receipt Generation
 
   Scenario: Successfully process payment and generate receipt
     When I process payment with "card"
-    Then I should see a payment confirmation "Payment of 45.00 SEK using card processed successfully"
+    Then I should see a payment confirmation "Payment of 45.00 SEK using card processed successfully."  # Adăugat punct
     And I should receive a receipt with:
       | Subtotal            | 50.00 |
       | Discount            | 5.00  |
       | Total After Discount| 45.00 |
     And the cart should contain 0 books
+
 
   Scenario: Attempt payment while not logged in
     Given I am not logged in
